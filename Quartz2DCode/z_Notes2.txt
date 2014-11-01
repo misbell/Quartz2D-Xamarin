@@ -1,0 +1,57 @@
+﻿
+THIS IS OBJECTIVEC from where??
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_context/dq_context.html
+
+CGContextRef MyCreateBitmapContext (int pixelsWide,
+                            int pixelsHigh)
+{
+    CGContextRef    context = NULL;
+    CGColorSpaceRef colorSpace;
+    void *          bitmapData;         (byte[])
+    int             bitmapByteCount;
+    int             bitmapBytesPerRow;
+ 
+    bitmapBytesPerRow   = (pixelsWide * 4);// 1
+    bitmapByteCount     = (bitmapBytesPerRow * pixelsHigh);
+ 
+    colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);// 2
+    bitmapData = calloc( bitmapByteCount );// 3
+    if (bitmapData == NULL)
+    {
+        fprintf (stderr, "Memory not allocated!");
+        return NULL;
+    }
+    context = CGBitmapContextCreate (bitmapData,// 4
+                                    pixelsWide,
+                                    pixelsHigh,
+                                    8,      // bits per component
+                                    bitmapBytesPerRow,
+                                    colorSpace,
+                                    kCGImageAlphaPremultipliedLast);
+    if (context== NULL)
+    {
+        free (bitmapData);// 5
+        fprintf (stderr, "Context not created!");
+        return NULL;
+    }
+    CGColorSpaceRelease( colorSpace );// 6
+ 
+    return context;// 7
+}
+    =======
+
+      CGRect myBoundingBox;// 1
+ 
+    myBoundingBox = CGRectMake (0, 0, myWidth, myHeight);// 2
+    myBitmapContext = MyCreateBitmapContext (400, 300);// 3
+    // ********** Your drawing code here ********** // 4
+    CGContextSetRGBFillColor (myBitmapContext, 1, 0, 0, 1);
+    CGContextFillRect (myBitmapContext, CGRectMake (0, 0, 200, 100 ));
+    CGContextSetRGBFillColor (myBitmapContext, 0, 0, 1, .5);
+    CGContextFillRect (myBitmapContext, CGRectMake (0, 0, 100, 200 ));
+    myImage = CGBitmapContextCreateImage (myBitmapContext);// 5
+    CGContextDrawImage(myContext, myBoundingBox, myImage);// 6
+    char *bitmapData = CGBitmapContextGetData(myBitmapContext); // 7
+    CGContextRelease (myBitmapContext);// 8
+    if (bitmapData) free(bitmapData); // 9
+    CGImageRelease(myImage);

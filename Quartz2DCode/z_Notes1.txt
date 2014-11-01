@@ -1,0 +1,52 @@
+﻿
+Working through apple doc for QUARTZ2D programming guide
+
+spent over a day on getting the bitmap contexts perfect 
+but that's fine
+now they are perfect
+
+https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaDrawingGuide/Paths/Paths.html
+
+
+
+
+puzzled by different CGContext techniques
+
+I am simply going to stop and understand them
+
+because I am feeling the same kind of mental sickness I did when I worked on PMc
+
+the instructions are not clear and that disintegrates me mentally
+
+where is 'lock' and what does that do?
+
+ok I'm making a context and drawing rectangles but I don't have to do that, right?
+
+so first decision, use context / don't use context
+
+no, I don't know what I'm thinking about, you always draw into a context
+
+so let's just keep creating new views to test out ideas as we go along
+
+we'll do that as long as it's simple
+
+and create a new solution or two once it's no longer simple
+
+what do void * work out to in C#...
+like bitmapdata
+
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/Quartz2D_Collection/_index.html#//apple_ref/doc/uid/TP40003853
+
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CGBitmapContext/index.html#//apple_ref/doc/uid/TP30000947
+
+https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/csintro/csintro_intro/csintro_intro.html#//apple_ref/doc/uid/TP30001148
+
+
+so 3 different examples on cocoa drawing
+
+bitmap with no image
+bitmap with image
+pdf
+
+so where is plain old CGContext? that only takes ARGB?
+
