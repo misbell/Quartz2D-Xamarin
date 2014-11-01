@@ -6,6 +6,9 @@ using CoreFoundation;
 
 // all the path drawing.c code translated from gelphman
 
+// original code NOT saved line by line, sorry, see other files 
+// converted by Michael Prenez-Isbell
+// Oct-Nov 2014
 
 namespace Quartz2DCode
 {

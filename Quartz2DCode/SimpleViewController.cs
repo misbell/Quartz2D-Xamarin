@@ -3,6 +3,14 @@ using AppKit;
 using CoreGraphics;
 using Foundation;
 
+
+// the one view controller that I use to show all the test
+// I just instantiate one of the DrawingKit classes
+// then call one of its test methods in its DrawRect method
+// all hail David Gelphman
+// look in DrawingKits project folder for translation of the Gelphman code
+
+
 namespace Quartz2DCode
 {
 	public class SimpleViewController : NSViewController

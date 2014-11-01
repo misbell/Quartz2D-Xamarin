@@ -6,6 +6,9 @@ using CoreFoundation;
 
 // all the shadow and transparency code from gelphman
 
+// original code NOT saved line by line, sorry, see other classes
+// converted by Michael Prenez-Isbell
+// Oct-Nov 2014
 
 namespace Quartz2DCode
 {

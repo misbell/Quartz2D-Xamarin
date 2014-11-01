@@ -2,6 +2,9 @@
 using AppKit;
 using CoreGraphics;
 using Foundation;
+ 
+// just a playing around class
+// look in DrawingKits project folder for translation of the Gelphman code
 
 namespace Quartz2DCode
 {

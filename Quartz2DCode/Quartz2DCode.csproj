@@ -92,6 +92,7 @@
     <Compile Include="DrawingKits\PathDrawing.cs" />
     <Compile Include="DrawingKits\CoordinateSystem.cs" />
     <Compile Include="DrawingKits\Utilities.cs" />
+    <Compile Include="DrawingKits\Shadings.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />

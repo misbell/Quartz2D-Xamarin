@@ -4,7 +4,11 @@ using CoreGraphics;
 using Foundation;
 using CoreFoundation;
 
-// original code saved line by line
+
+
+// original code saved line by line 
+// converted by Michael Prenez-Isbell
+// Oct-Nov 2014
 
 namespace Quartz2DCode
 {
@@ -84,37 +88,50 @@ namespace Quartz2DCode
 
 			// alpha is 22.5 degrees and beta is 15 degrees.
 			//float alpha =  M_PI/8, beta = M_PI/12;
-			float alpha = Math.PI / 8.0f;
-			float beta = Math.PI / 12.0f;
+			float alpha = (float)(Math.PI / 8.0f);
+			float beta = (float)( Math.PI / 12.0f);
 			CGAffineTransform skew;
 			// Create a rectangle that is 72 units on a side
 			// with its origin at (0,0).
 			//CGRect r = CGRectMake(0, 0, 72, 72);
+			CGRect r = new CGRect(0,0,72,72);
 
 			//CGContextTranslateCTM(context, 144, 144);
 			context.TranslateCTM(144.0f, 144.0f);
 
 			// Draw the coordinate axes untransformed.
-			drawCoordinateAxes(context);
+			Utilities.drawCoordinateAxes(context);
 			// Fill the rectangle.
-			CGContextFillRect(context, r);
+			//CGContextFillRect(context, r);
+			context.FillRect(r);
 
 			// Create an affine transform that skews the coordinate system,
 			// skewing the x-axis by alpha radians and the y-axis by beta radians. 
-			skew = CGAffineTransformMake(1, tan(alpha), tan(beta), 1, 0, 0);
+			//skew = CGAffineTransformMake(1, tan(alpha), tan(beta), 1, 0, 0);
+			skew = new CGAffineTransform(1, (nfloat)Math.Tan(alpha), (nfloat)Math.Tan(beta), 1, 0, 0); // love the math!
+
 			// Apply that transform to the context coordinate system.
-			CGContextConcatCTM(context, skew);
+			//CGContextConcatCTM(context, skew);
+			context.ConcatCTM(skew); // alters the matrix in the context, ya see
 
 			// Set the fill and stroke color to a dark blue.
-			CGContextSetRGBStrokeColor(context, 0.11, 0.208, 0.451, 1);
-			CGContextSetRGBFillColor(context, 0.11, 0.208, 0.451, 1);
+			//CGContextSetRGBStrokeColor(context, 0.11, 0.208, 0.451, 1);
+			context.SetStrokeColor(0.11f, 0.208f, 0.451f, 1f);
+
+			//CGContextSetRGBFillColor(context, 0.11, 0.208, 0.451, 1);
+			context.SetFillColor(0.11f, 0.208f, 0.451f, 1f);
+
+
 
 			// Draw the coordinate axes again, now transformed.
-			drawCoordinateAxes(context);
+			Utilities.drawCoordinateAxes(context);
 			// Set the fill color again but with a partially transparent alpha.
-			CGContextSetRGBFillColor(context, 0.11, 0.208, 0.451, 0.7);
+			//CGContextSetRGBFillColor(context, 0.11, 0.208, 0.451, 0.7);
+			context.SetFillColor( 0.11f, 0.208f, 0.451f, 0.7f);
+
 			// Fill the rectangle in the transformed coordinate system.
-			CGContextFillRect(context, r);
+			//CGContextFillRect(context, r);
+			context.FillRect(r);
 		}
 	}
 }
