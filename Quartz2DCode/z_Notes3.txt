@@ -1,13 +1,6 @@
-﻿/*
+﻿
 
-
-
+#include "CoordinateSystem.h"
 #include <math.h>		// for M_PI
-#include "DrawingBasics.h"
-
-
-
-
-
 
 
