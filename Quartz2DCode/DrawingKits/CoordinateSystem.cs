@@ -12,7 +12,7 @@ namespace Quartz2DCode
 		{
 		}
 
-	//	void doRotatedEllipses(CGContextRef context)
+	//	void doRotatedEllipses(CGContextRef context) //
 		void doRotatedEllipses()
 		{
 			int i, totreps = 144;
