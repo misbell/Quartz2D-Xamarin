@@ -8,11 +8,16 @@ namespace Quartz2DCode
 {
 	public class Utilities
 	{
+		private const nfloat kTickLength= 5.0;
+		private const nfloat kTickDistance= 72.0;
+		private const nfloat kAxesLength =(20*kTickDistance);
+
 		public Utilities ()
 		{
 		}
 
-		void drawCoordinateAxes(CGContextRef context)
+		//void drawCoordinateAxes(CGContextRef context)
+		public void drawCoordinateAxes()
 		{
 			int i;
 			float t;
@@ -23,12 +28,16 @@ namespace Quartz2DCode
 			CGContext context = NSGraphicsContext.CurrentContext.GraphicsPort;
 
 			//CGContextSaveGState(context);
-			context.
+			context.SaveState();
 
-			CGContextBeginPath(context);
+			//CGContextBeginPath(context);
+			context.BeginPath();
+
 			// Paint the x-axis in red.
-			CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
-			CGContextMoveToPoint(context, -kTickLength, 0.);
+			//CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
+			context.SetStrokeColor(1,0,0,1);
+
+			context.MoveTo( -kTickLength, 0.0f);
 			CGContextAddLineToPoint(context, kAxesLength, 0.);
 			CGContextDrawPath(context, kCGPathStroke);
 
@@ -55,13 +64,15 @@ namespace Quartz2DCode
 			CGContextRestoreGState(context);
 		}
 
-		void drawPoint(CGContextRef context, CGPoint p)
+		public void drawPoint(CGPoint p)
 		{
 			// work with the current context, associated with view
 			NSGraphicsContext ccontext = NSGraphicsContext.CurrentContext;
 			CGContext context = NSGraphicsContext.CurrentContext.GraphicsPort;
 
-			CGContextSaveGState(context);
+			// CGContextSaveGState(context);
+			context.SaveState();
+
 			// Opaque black.
 			CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
 			CGContextSetLineWidth(context, 5);

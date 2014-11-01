@@ -4,6 +4,8 @@ using CoreGraphics;
 using Foundation;
 using CoreFoundation;
 
+// original code saved line by line
+
 namespace Quartz2DCode
 {
 	public class CoordinateSystem
