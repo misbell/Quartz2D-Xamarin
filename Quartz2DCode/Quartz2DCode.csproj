@@ -91,6 +91,7 @@
     <Compile Include="DrawingKits\ShadowAndTransparency.cs" />
     <Compile Include="DrawingKits\PathDrawing.cs" />
     <Compile Include="DrawingKits\CoordinateSystem.cs" />
+    <Compile Include="DrawingKits\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
@@ -101,6 +102,7 @@
     <None Include="z_Notes1.txt" />
     <None Include="z_Notes2.txt" />
     <None Include="z_Notes3.txt" />
+    <None Include="z_Notes4.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <ItemGroup>
