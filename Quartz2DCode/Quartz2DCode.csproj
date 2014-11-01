@@ -90,6 +90,7 @@
     <Compile Include="DrawingKits\DrawingBasics.cs" />
     <Compile Include="DrawingKits\ShadowAndTransparency.cs" />
     <Compile Include="DrawingKits\PathDrawing.cs" />
+    <Compile Include="DrawingKits\CoordinateSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
