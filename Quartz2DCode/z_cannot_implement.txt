@@ -1,0 +1,20 @@
+﻿
+method: static CGFunction createFunctionForRGB(CGFunction.CGFunctionEvaluate evaluationFunction)
+in: shadings.cs
+because: CGFunctionCallbacks not implemented or workaround not known
+
+
+
+OTHER
+
+drag images in NSOutlineView
+get on with chris hanlon about this
+
+and 
+
+nsarraycontroller
+object class
+not working
+
+
+

@@ -104,6 +104,7 @@
     <None Include="z_Notes2.txt" />
     <None Include="z_Notes3.txt" />
     <None Include="z_Notes4.txt" />
+    <None Include="z_cannot_implement.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <ItemGroup>

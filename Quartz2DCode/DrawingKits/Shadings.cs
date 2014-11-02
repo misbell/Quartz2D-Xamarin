@@ -28,6 +28,8 @@ namespace Quartz2DCode
 		red at the start point to a pure opaque black at the 
 		midpoint, and back to pure opaque red at the end point.
     */
+
+			outfloat = new float[3];
 			// The red component evaluates to 1 for an input value of 0
 			// (the start point of the shading). It smoothly reduces
 			// to zero at the midpoint of the shading (input value 0.5)  
@@ -42,19 +44,28 @@ namespace Quartz2DCode
 
 
 		// should look something like this
-		public void MPIFunctionCallbacks () {
-
-			// version
-			// evaluate
-			// releaseInfo
-		}
 
 
+		struct MPIFunctionCallbacks {
+
+				int version; 
+				CGFunction.CGFunctionEvaluate evaluate; 
+			unsafe * releaseInfo ;
+
+
+		} ;
+
+
+		/* at this time CANNOT IMPLEMENT DUE TO ISSUES WITH CGFunctionCallbacks
+		 * 
+		 * 
 		//static CGFunction createFunctionForRGB(CGFunctionEvaluateCallback evaluationFunction)
 		static CGFunction createFunctionForRGB(CGFunction.CGFunctionEvaluate evaluationFunction)
 
 
 		{
+
+		
 			CGFunction function;
 			float[] domain;	// 1 input
 			float[] range;	// 4 outputs
@@ -63,18 +74,18 @@ namespace Quartz2DCode
 			MPIFunctionCallbacks shadingCallbacks = new MPIFunctionCallbacks();
 
 
-			/*	This is a 1 in, 4 out function for drawing shadings 
-		in a 3 component (plus alpha) color space. Shadings 
-		parameterize the endpoints such that the starting point
-		represents the function input value 0 and the ending point 
-		represents the function input value 1. 
-    */
+		//	/*	This is a 1 in, 4 out function for drawing shadings 
+		//in a 3 component (plus alpha) color space. Shadings 
+		//parameterize the endpoints such that the starting point
+		//represents the function input value 0 and the ending point 
+		//represents the function input value 1. 
+    
 			domain[0] = 0; domain[1] = 1;
 
-			/*	The range is the range for the output colors. For an rgb
-		color space the values range from 0-1 for the r,g,b, and a
-		components. 
-	*/
+		//	/*	The range is the range for the output colors. For an rgb
+		//color space the values range from 0-1 for the r,g,b, and a
+		//components. 
+	
 
 			// The red component, min and max.    
 			range[0] = 0; range[1] = 1;
@@ -103,6 +114,7 @@ namespace Quartz2DCode
 			}
 			return function;
 		}
+		*/
 	}
 }
 
