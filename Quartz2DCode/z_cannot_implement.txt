@@ -4,6 +4,9 @@ in: shadings.cs
 because: CGFunctionCallbacks not implemented or workaround not known
 
 
+method: getthergbcolorspace
+in: utilites.cs
+because; CM ColorSync Management not bound
 
 OTHER
 

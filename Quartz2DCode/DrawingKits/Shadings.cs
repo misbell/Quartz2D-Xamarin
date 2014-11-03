@@ -14,7 +14,7 @@ namespace Quartz2DCode
 
 
 		//static void RedBlackRedRampEvaluate(void *info, const float *in, float *out)
-		static public void RedBlackRedRampEvaluate( NSObject info,  float[] infloat, out float[] outfloat)
+		static public unsafe void RedBlackRedRampEvaluate( CGFunction.CGFunctionEvaluate info,  nfloat *infloat, nfloat *outfloat)
 		{
 			/*	The domain of this function is 0 - 1. For an input value of 0
 		this function returns the color to paint at the start point
@@ -28,8 +28,8 @@ namespace Quartz2DCode
 		red at the start point to a pure opaque black at the 
 		midpoint, and back to pure opaque red at the end point.
     */
-
-			outfloat = new float[3];
+			nfloat newff = 1.0f;
+			outfloat = &newff;
 			// The red component evaluates to 1 for an input value of 0
 			// (the start point of the shading). It smoothly reduces
 			// to zero at the midpoint of the shading (input value 0.5)  
@@ -46,15 +46,22 @@ namespace Quartz2DCode
 		// should look something like this
 
 
-		struct MPIFunctionCallbacks {
+//		struct MPIFunctionCallbacks {
 
-				int version; 
-				CGFunction.CGFunctionEvaluate evaluate; 
-			unsafe * releaseInfo ;
+//				int version; 
+//				CGFunction.CGFunctionEvaluate evaluate; 
+//			unsafe * releaseInfo ;
 
 
-		} ;
+//		} ;
 
+
+		// dummy function, see the function below
+		public unsafe CGFunction createFunctionForRGB(CGFunction.CGFunctionEvaluate evaluationFunction,nfloat *infloat, nfloat *outfloat) {
+			nfloat[] domain = new nfloat[1];
+			nfloat[] range = new nfloat[1];
+			return new CGFunction(domain, range, evaluationFunction);
+		}
 
 		/* at this time CANNOT IMPLEMENT DUE TO ISSUES WITH CGFunctionCallbacks
 		 * 
@@ -115,6 +122,71 @@ namespace Quartz2DCode
 			return function;
 		}
 		*/
+
+		/*
+		public unsafe void doSimpleAxialShading()
+		{
+			CGFunction axialFunction;
+			CGShading shading;
+			CGPoint startPoint, endPoint;
+			bool extendStart, extendEnd;
+
+
+			// work with the current context, associated with view
+			NSGraphicsContext ccontext = NSGraphicsContext.CurrentContext;
+			CGContext context = NSGraphicsContext.CurrentContext.GraphicsPort;
+
+			// This shading paints colors in the calibrated Generic RGB 
+			// color space so it needs a function that evaluates 1 in to 4 out.
+			nfloat a = 1.0f;
+			nfloat b = 1.0f;
+
+			nfloat* c = &a;
+			nfloat* d = &b;
+
+			// not working
+			axialFunction = null;
+	//		axialFunction = createFunctionForRGB(RedBlackRedRampEvaluate, &c, &d);
+			if(axialFunction == null){
+				return;
+			}
+
+			// Start the shading at the point (20,20) and
+			// end it at (420,20). The axis of the shading
+			// is a line from (20,20) to (420,20).
+			startPoint.X = 20;
+			startPoint.Y = 20;
+			endPoint.X = 420;
+			endPoint.Y = 20;
+
+			// Don't extend this shading.
+			extendStart = extendEnd = false;
+
+		
+
+			shading = CGShading.CreateAxial((getTheCalibratedRGBColorSpace(), 
+				startPoint, endPoint, 
+				axialFunction, 
+				extendStart, extendEnd);
+			// The shading retains the function and this code
+			// is done with the function so it should release it.
+
+			// doesn't exist
+			// is this just taken care of?
+			CGFunctionRelease(axialFunction);
+			if(shading == NULL){
+				fprintf(stderr, "Couldn't create the shading!\n");
+				return;
+			}
+			// Draw the shading. This paints the shading to
+			// the destination context, clipped by the
+			// current clipping area.
+			CGContextDrawShading(context, shading);
+			// Release the shading once the code is done with
+			// it.
+			CGShadingRelease(shading);
+		}
+				*/
 	}
 }
 

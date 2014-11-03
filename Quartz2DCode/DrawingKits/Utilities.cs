@@ -21,6 +21,92 @@ namespace Quartz2DCode
 		{
 		}
 
+		// no cfbundle call in xamarin
+		NSBundle getAppBundle()
+		{
+			NSBundle appBundle = null;
+			if(appBundle == null)
+				appBundle = NSBundle.MainBundle;
+
+			return appBundle;
+		}
+
+
+
+		/*
+		This version of getTheRGBColorSpace returns
+		the DeviceRGB color space.
+		*/
+		static CGColorSpace getTheRGBColorSpace()
+		{
+		
+			CGColorSpace deviceRGB = null;
+		// Set once, the first time this function is called.
+		if(deviceRGB == null)
+				deviceRGB = CGColorSpace.CreateDeviceRGB();
+
+		return deviceRGB;
+		}
+
+
+		/*
+		// The full path to the generic RGB ICC profile.
+		const string kGenericRGBProfilePathStr = "/System/Library/ColorSync/Profiles/Generic RGB Profile.icc";
+
+		public static CGColorSpace getTheRGBColorSpace()
+		{
+			 CGColorSpace genericRGBColorSpace = NULL;
+			if(genericRGBColorSpace == NULL)
+			{
+				CMProfileRef genericRGBProfile = NULL;
+				OSStatus err = noErr;
+				CMProfileLocation loc;
+				// Build up a profile location for ColorSync.
+				loc.locType = cmPathBasedProfile;
+				strcpy (loc.u.pathLoc.path, kGenericRGBProfilePathStr);
+				// Open the profile with ColorSync.
+				err = CMOpenProfile(&genericRGBProfile, &loc);
+				if(err == noErr){
+					genericRGBColorSpace =
+						CGColorSpaceCreateWithPlatformColorSpace(genericRGBProfile);
+					if(genericRGBColorSpace == NULL)
+						fprintf(stderr, "couldn't create the generic RGB color space\n");
+					// This code opened the profile so it is 
+					// up to it to close it.
+					CMCloseProfile(genericRGBProfile); 
+				}else{
+					// ColorSync could not open the profile so log a message 
+					// to the console.
+					fprintf(stderr, "couldn't open generic profile due to error %d\n",
+						(int)err);
+				}
+			}
+			return genericRGBColorSpace;
+		}
+
+		// This only builds on Tiger and later.
+		CGColorSpace getTheCalibratedRGBColorSpace()
+		{
+			 CGColorSpace genericRGBColorSpace = NULL;
+			if(genericRGBColorSpace == NULL)
+			{
+				// Test the symbol kCGColorSpaceGenericRGB to see if 
+				// it is available. If so, use it.
+				if(&kCGColorSpaceGenericRGB != NULL)
+					genericRGBColorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+
+				// If genericRGBColorSpace is still NULL, use the technique
+				// of using ColorSync to open the disk based profile by using 
+				// getTheRGBColorSpace.
+				if(genericRGBColorSpace == NULL){
+					genericRGBColorSpace = getTheRGBColorSpace();
+				}
+			}
+			return genericRGBColorSpace;
+		}
+
+		*/
+
 		//void drawCoordinateAxes(CGContextRef context)
 		static public void drawCoordinateAxes(CGContext context)
 		{
@@ -121,6 +207,9 @@ namespace Quartz2DCode
 
 
 		}
+
+
+
 
 	}
 }
